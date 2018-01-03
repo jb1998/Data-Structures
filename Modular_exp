@@ -1,0 +1,24 @@
+package competitive_algos;
+
+public class Modular_exponentiation {
+
+	public static int modular(int a,int b,int mod)
+	{
+		int res=1;
+		a=a%mod;
+		while(b>0)
+		{
+			if((b & 1)==1)
+				res=(res*a)%mod;
+			b=b<<1;
+			a=(a*a)%mod;
+			
+		}
+			return res;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+       System.out.println(modular(2,5,13));
+	}
+
+}
