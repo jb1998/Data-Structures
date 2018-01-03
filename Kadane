@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class Maximum_sum_rectangle {
+	   public static int kadane(int arr[])
+	    {
+	    	int sum_till_now=0;
+	    	int ans_sum=Integer.MIN_VALUE;
+	    	for(int i=0;i<arr.length;i++)
+	    	{
+	    		sum_till_now+=arr[i];
+	    		if(sum_till_now>ans_sum)
+	    		{
+	    			ans_sum=sum_till_now;
+	    		}
+	    		if(sum_till_now<0)
+	    		{
+	    			sum_till_now=0;
+	    		}
+	    	}
+	    	return ans_sum;
+	    }
+	public static void main(String[] args) {
+	 Scanner sc =new Scanner(System.in);
+	 int rows=sc.nextInt();
+	 int columns=sc.nextInt();
+	 int arr[][]=new int[rows][columns];
+	 for(int i=0;i<rows;i++)
+	 {
+		 for(int j=0;j<columns;j++)
+		 {
+			 arr[i][j]=sc.nextInt();
+		 }
+	 }
+	
+	 int ans=Integer.MIN_VALUE;
+	 for(int lc=0;lc<columns;lc++)
+	 {
+		 int column_array[]=new int[rows];
+		 for(int rc=lc;rc<columns;rc++)
+		 {
+			 
+			 for(int i=0;i<rows;i++)
+			 {
+				 column_array[i]+=arr[i][rc];
+			 }
+			int curr=kadane(column_array);
+//			System.out.println(curr+" dhquwhduq");
+			if(curr>ans)
+				ans=curr;
+			 
+		 }
+	 }
+	 System.out.println(ans);
+	}
+
+}
